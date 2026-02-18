@@ -13,16 +13,26 @@
 </head>
 
 <body>
+    <div class="mesh-gradient">
+        <div class="mesh-ball ball-1"></div>
+        <div class="mesh-ball ball-2"></div>
+    </div>
+    <div class="noise-overlay"></div>
     <div class="cursor-follower"></div>
 
     <nav class="navbar">
         <a href="#hero" class="logo">JS.</a>
         <div class="nav-links">
             <a href="#work">Work</a>
+            <a href="#blog">Blog</a>
             <a href="#about">About</a>
             <a href="#now">Now</a>
             <a href="#contact">Contact</a>
         </div>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+            <span class="sun-icon">☀️</span>
+            <span class="moon-icon">🌙</span>
+        </button>
     </nav>
 
     <main>
@@ -47,7 +57,7 @@
                             <img src="images/phisherman.svg" alt="Phisherman Project" class="project-image">
                         </div>
                         <div class="project-info">
-                            <a href="https://phisherman-an5.pages.dev/">
+                            <a href="https://phisherman-security.joey727.workers.dev">
                                 <h3>Phisherman</h3>
                                 <p>Phishing Detection Tool</p>
                             </a>
@@ -74,6 +84,26 @@
                             </a>
                             <p>Image deblurring and enhancement</p>
                         </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="blog-section reveal-on-scroll">
+            <div class="container">
+                <h2 class="section-title">Latest Thoughts</h2>
+                <div class="blog-grid">
+                    <article class="blog-card">
+                        <span class="blog-date">Feb 2025</span>
+                        <h3>The Art of Minimalist Engineering</h3>
+                        <p>Exploring why less is often more when building robust digital tools.</p>
+                        <a href="#" class="read-more">Read Entry →</a>
+                    </article>
+                    <article class="blog-card">
+                        <span class="blog-date">Jan 2025</span>
+                        <h3>Rust: First Impressions</h3>
+                        <p>My journey transitioning from TypeScript to systems programming with Rust.</p>
+                        <a href="#" class="read-more">Read Entry →</a>
                     </article>
                 </div>
             </div>
