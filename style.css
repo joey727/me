@@ -1,12 +1,29 @@
 :root {
-    --bg-color: #0a0a0a;
+    /* Dark Theme (Default) */
+    --bg-color: #050505;
     --text-color: #f0f0f0;
     --accent-color: #ffffff;
     --secondary-text: #888888;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --glass-blur: 15px;
     --font-main: 'Outfit', sans-serif;
     --spacing-unit: 1rem;
     --container-width: 1200px;
     --transition-speed: 0.4s;
+    --gradient-1: #1a1a1a;
+    --gradient-2: #0a0a0a;
+}
+
+[data-theme='light'] {
+    --bg-color: #f5f5f7;
+    --text-color: #1a1a1a;
+    --accent-color: #000000;
+    --secondary-text: #666666;
+    --card-bg: rgba(0, 0, 0, 0.03);
+    --card-border: rgba(0, 0, 0, 0.05);
+    --gradient-1: #e0e0e0;
+    --gradient-2: #f5f5f7;
 }
 
 * {
@@ -14,7 +31,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 
 /* Lenis recommended CSS */
 html.lenis,
@@ -45,11 +61,57 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     cursor: none;
-    /* Custom cursor */
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+/* Mesh Gradient Background */
+.mesh-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background: linear-gradient(45deg, var(--gradient-1), var(--gradient-2));
+    opacity: 0.6;
+}
+
+.mesh-ball {
+    position: absolute;
+    width: 50vw;
+    height: 50vw;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.2;
+    animation: meshMove 20s infinite alternate ease-in-out;
+}
+
+.ball-1 {
+    top: -10%;
+    left: -10%;
+    background: radial-gradient(circle, #444, transparent);
+}
+
+.ball-2 {
+    bottom: -10%;
+    right: -10%;
+    background: radial-gradient(circle, #333, transparent);
+    animation-delay: -5s;
+}
+
+@keyframes meshMove {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(10%, 10%) scale(1.1);
+    }
 }
 
 /* Noise Texture */
-body::before {
+.noise-overlay {
     content: "";
     position: fixed;
     top: 0;
@@ -59,7 +121,7 @@ body::before {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 9998;
-    opacity: 0.4;
+    opacity: 0.3;
 }
 
 /* Custom Cursor */
@@ -212,33 +274,10 @@ h3 {
     gap: 4rem;
 }
 
-.project-card {
-    transition: transform var(--transition-speed);
-}
-
-.project-card:hover {
-    transform: translateY(-10px);
-}
-
-.project-image-container {
-    width: 100%;
-    aspect-ratio: 4/3;
-    overflow: hidden;
-    margin-bottom: 1.5rem;
-    background-color: var(--bg-color);
-    /* Matches the main background */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    /* Added padding to give logos breathing room */
-}
-
 .project-image {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    /* Prevents cropping */
     transition: transform 0.6s ease;
 }
 
@@ -351,18 +390,149 @@ footer {
     font-size: 0.9rem;
 }
 
+/* Glassmorphism Cards */
+.project-card,
+.blog-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+}
+
+.project-card:hover,
+.blog-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-10px);
+}
+
+[data-theme='light'] .project-card:hover,
+[data-theme='light'] .blog-card:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.project-image-container {
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: none;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 2rem;
+    transition: transform 0.3s ease;
+}
+
+[data-theme='dark'] .sun-icon {
+    display: block;
+}
+
+[data-theme='dark'] .moon-icon {
+    display: none;
+}
+
+[data-theme='light'] .sun-icon {
+    display: none;
+}
+
+[data-theme='light'] .moon-icon {
+    display: block;
+}
+
+/* Blog Section */
+.blog-section {
+    padding: 10rem 0;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.blog-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.blog-date {
+    font-size: 0.8rem;
+    color: var(--secondary-text);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.blog-card h3 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+}
+
+.read-more {
+    margin-top: auto;
+    font-weight: 500;
+    transition: opacity 0.3s;
+}
+
+.read-more:hover {
+    opacity: 0.7;
+}
+
+/* Scroll Animations */
+.scroll-reveal-hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Project Info links tweak */
+.project-info a {
+    display: block;
+}
+
+/* Sections overlap fix */
+section {
+    position: relative;
+    z-index: 1;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .navbar {
-        padding: 1.5rem;
+        padding: 1rem;
     }
 
     .nav-links {
         display: none;
-        /* Simple hide for now, could add mobile menu later */
+    }
+
+    .theme-toggle-btn {
+        margin-left: auto;
+    }
+
+    .hero-title {
+        font-size: 4rem;
     }
 
     .container {
         padding: 0 1.5rem;
+    }
+
+    .blog-grid {
+        grid-template-columns: 1fr;
     }
 }

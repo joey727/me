@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Hover effects for cursor
-    const hoverElements = document.querySelectorAll('a, button, .project-card');
+    const hoverElements = document.querySelectorAll('a, button, .project-card, .blog-card');
 
     hoverElements.forEach(el => {
         el.addEventListener('mouseenter', () => {
@@ -22,24 +22,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Intersection Observer for scroll animations
-    const observerOptions = {
-        threshold: 0.1
-    };
+    // Theme Switcher Logic
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
+    // Check for saved theme or default to system preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    const initialTheme = savedTheme || systemTheme;
 
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-        observer.observe(section);
+    htmlElement.setAttribute('data-theme', initialTheme);
+
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = htmlElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+        htmlElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+
+        // Micro-interaction for toggle
+        themeToggle.style.transform = 'scale(0.8)';
+        setTimeout(() => themeToggle.style.transform = 'scale(1)', 100);
     });
+
     // Lenis Smooth Scroll Initialization
     const lenis = new Lenis({
         duration: 1.2,
@@ -60,8 +65,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     requestAnimationFrame(raf);
 
-    // Sync Lenis with scroll-linked animations if any
-    lenis.on('scroll', (e) => {
-        // Optional: handle scroll events
+    // Enhanced Anchor Link Handling for Lenis
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                lenis.scrollTo(targetElement, {
+                    offset: -80,
+                    duration: 1.5
+                });
+            }
+        });
+    });
+
+    // Intersection Observer for Scroll Reveal
+    const revealOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, revealOptions);
+
+    const revealElements = document.querySelectorAll('.reveal-on-scroll, section, article');
+    revealElements.forEach(el => {
+        el.classList.add('scroll-reveal-hidden');
+        revealObserver.observe(el);
     });
 });
