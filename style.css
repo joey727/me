@@ -60,7 +60,6 @@ body {
     font-family: var(--font-main);
     line-height: 1.6;
     overflow-x: hidden;
-    cursor: none;
     transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
@@ -124,29 +123,12 @@ body {
     opacity: 0.3;
 }
 
-/* Custom Cursor */
-.cursor-follower {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    transition: width 0.2s, height 0.2s, background-color 0.2s;
-    mix-blend-mode: difference;
-}
-
-body:hover .cursor-follower {
-    opacity: 1;
-}
+/* Custom Cursor Removal */
+/* .cursor-follower styles removed */
 
 a {
     text-decoration: none;
     color: inherit;
-    cursor: none;
-    /* Hide default cursor on links too */
 }
 
 ul {
@@ -189,7 +171,8 @@ h3 {
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    mix-blend-mode: difference;
+    background: transparent;
+    transition: background 0.3s ease;
 }
 
 .logo {
@@ -420,16 +403,41 @@ footer {
 
 /* Theme Toggle Button */
 .theme-toggle-btn {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: none;
-    padding: 0.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-left: 2rem;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background 0.3s ease;
+    color: var(--text-color);
+}
+
+.theme-toggle-btn:hover {
+    background: var(--card-border);
+    transform: scale(1.1);
+}
+
+.theme-toggle-btn img {
+    width: 20px;
+    height: 20px;
+    filter: invert(var(--icon-invert, 0));
+}
+
+[data-theme='light'] {
+    --icon-invert: 0;
+}
+
+[data-theme='dark'] {
+    --icon-invert: 0;
+    /* SVGs already have currentColor or suitable default */
 }
 
 [data-theme='dark'] .sun-icon {
