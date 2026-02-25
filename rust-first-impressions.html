@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rust: First Impressions | Joshua Sackey</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        .blog-post-content {
+            padding-top: 10rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .blog-post-header {
+            margin-bottom: 4rem;
+        }
+
+        .blog-post-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+        }
+
+        .blog-post-meta {
+            color: var(--secondary-text);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .blog-post-body {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+
+        .blog-post-body p {
+            margin-bottom: 2rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--secondary-text);
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--text-color);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mesh-gradient">
+        <div class="mesh-ball ball-1"></div>
+        <div class="mesh-ball ball-2"></div>
+    </div>
+    <div class="noise-overlay"></div>
+    <div class="cursor-follower"></div>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">JS.</a>
+        <div class="nav-links">
+            <a href="index.html#work">Work</a>
+            <a href="index.html#blog">Blog</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <article class="blog-post-content">
+            <a href="index.html#blog" class="back-link">← Back to Blog</a>
+            <header class="blog-post-header">
+                <span class="blog-post-meta">Jan 2025 • Programming</span>
+                <h1 class="blog-post-title">Rust: First Impressions</h1>
+            </header>
+            <section class="blog-post-body">
+                <p>Rust has been on my radar for a while now. Known for its performance, safety, and modern tooling, it
+                    has consistently topped the charts of "most loved" languages. Recently, I finally took the plunge
+                    and started learning it.</p>
+                <p>My first impression? The borrow checker is as formidable as they say. Coming from a background in
+                    TypeScript and Python, managing memory manually (or rather, through Rust's ownership model) was a
+                    significant shift in thinking.</p>
+                <p>But once I started to grasp the concepts, I began to see the magic. Rust gives you the performance of
+                    C++ with the safety of a high-level language. The compiler is incredibly helpful, often pinpointing
+                    exactly what's wrong and suggesting a fix.</p>
+                <p>Tooling like Cargo makes dependency management and building projects a breeze. It's clear that the
+                    Rust community has put a lot of thought into the developer experience.</p>
+                <p>I'm still early in my Rust journey, but I'm excited to see where it leads. The language encourages
+                    you to write better, safer code, and that's a goal worth pursuing.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Joshua Sackey.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
