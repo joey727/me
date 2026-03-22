@@ -176,11 +176,11 @@ h3 {
 }
 
 .logo {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Space Mono', monospace;
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     text-transform: lowercase;
-    letter-spacing: -0.05em;
+    letter-spacing: -0.02em;
     color: var(--accent-color);
     position: relative;
     padding: 0.5rem 1rem;
@@ -188,13 +188,14 @@ h3 {
     border: 1px solid var(--card-border);
     border-radius: 8px;
     backdrop-filter: blur(var(--glass-blur));
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .logo:hover {
     background: var(--card-border);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-    transform: translateY(-1px);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+    letter-spacing: 0.05em;
 }
 
 .nav-links a {
