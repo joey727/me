@@ -154,9 +154,9 @@ h3 {
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--secondary-text);
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     border-bottom: 1px solid #333;
-    padding-bottom: 1rem;
+    padding-bottom: 0.5rem;
     display: inline-block;
 }
 
@@ -168,23 +168,33 @@ h3 {
     width: 100%;
     padding: 2rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     z-index: 100;
     background: transparent;
     transition: background 0.3s ease;
+    pointer-events: none;
+    /* Allow clicking through navbar container */
+}
+
+.navbar * {
+    pointer-events: auto;
+    /* Re-enable pointer events for links and buttons */
 }
 
 .logo {
-    font-family: 'Space Mono', monospace;
+    font-family: 'Amaze Script';
     font-weight: 700;
+    font-style: italic;
     font-size: 1.1rem;
     text-transform: lowercase;
     letter-spacing: -0.02em;
     color: var(--accent-color);
-    position: relative;
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    z-index: 1000;
     padding: 0.5rem 1rem;
-    background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: 8px;
     backdrop-filter: blur(var(--glass-blur));
@@ -266,13 +276,13 @@ h3 {
 
 /* Work Section */
 .work-section {
-    padding: 10rem 0;
+    padding: 4rem 0;
 }
 
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 4rem;
+    gap: 2rem;
 }
 
 .project-image {
@@ -297,7 +307,7 @@ h3 {
 
 /* About Section */
 .about-section {
-    padding: 10rem 0;
+    padding: 4rem 0;
 }
 
 .about-content {
@@ -308,18 +318,18 @@ h3 {
 
 /* Now Section */
 .now-section {
-    padding: 10rem 0;
+    padding: 4rem 0;
 }
 
 .now-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 4rem;
+    gap: 2rem;
 }
 
 .now-column h3 {
     font-size: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     color: var(--text-color);
 }
 
@@ -349,8 +359,8 @@ h3 {
 
 /* Contact Section */
 .contact-section {
-    padding: 10rem 0;
-    min-height: 80vh;
+    padding: 4rem 0;
+    min-height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -360,7 +370,7 @@ h3 {
     font-size: clamp(2rem, 5vw, 5rem);
     font-weight: 700;
     display: block;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     transition: color var(--transition-speed);
 }
 
@@ -476,7 +486,7 @@ footer {
 
 /* Blog Section */
 .blog-section {
-    padding: 10rem 0;
+    padding: 4rem 0;
 }
 
 .blog-grid {
