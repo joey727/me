@@ -4,174 +4,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joshua Sackey | Portfolio</title>
+    <title>Joshua Sackey Junior</title>
     <meta name="description" content="Minimalist portfolio of Joshua Sackey.">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Space+Grotesk:wght@300;500;700&family=Space+Mono:wght@400;700&display=swap"
-        rel="stylesheet">
 </head>
 
-<body>
-    <div class="mesh-gradient">
-        <div class="mesh-ball ball-1"></div>
-        <div class="mesh-ball ball-2"></div>
-    </div>
-    <div class="noise-overlay"></div>
-
-    <a href="#hero" class="logo">codename=joey727</a>
-
-    <nav class="navbar">
-        <div class="nav-links">
-            <a href="#work">Work</a>
-            <a href="#blog">Blog</a>
-            <a href="#about">About</a>
-            <a href="#now">Now</a>
-            <a href="#contact">Contact</a>
-        </div>
-        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
-            <span class="sun-icon"><img src="images/sun.svg" alt="Sun Icon"></span>
-            <span class="moon-icon"><img src="images/moon.svg" alt="Moon Icon"></span>
-        </button>
-    </nav>
+<body class="container">
 
     <main>
-        <section id="hero" class="hero-section">
-            <div class="container">
-                <h1 class="hero-title">
-                    <span class="reveal-text">Designing</span><br>
-                    <span class="reveal-text">Digital</span><br>
-                    <span class="reveal-text">Experiences.</span>
-                </h1>
-                <p class="hero-subtitle reveal-text-delay">Building highly functional tools to solve real world
-                    problems.
-                </p>
-            </div>
+        <section id="intro">
+            <h1 class="hero-title">Joshua Sackey Junior</h1>
+            <p>I'm a software engineer building highly functional tools to solve real-world problems. Currently
+                exploring systems programming and refining digital interfaces.</p>
         </section>
 
-        <section id="work" class="work-section">
-            <div class="container">
-                <h2 class="section-title">Selected Work</h2>
-                <div class="project-grid">
-                    <article class="project-card">
-                        <div class="project-image-container">
-                            <img src="images/phisherman.svg" alt="Phisherman Project" class="project-image">
-                        </div>
-                        <div class="project-info">
-                            <a href="https://phisherman-security.joey727.workers.dev">
-                                <h3>Phisherman</h3>
-                                <p>Phishing Detection Tool</p>
-                            </a>
-                        </div>
-                    </article>
-                    <article class="project-card">
-                        <div class="project-image-container">
-                            <img src="images/reelflux.png" alt="ReelFlux Project" class="project-image">
-                        </div>
-                        <div class="project-info">
-                            <a href="https://github.com/joey727/ReelFlux">
-                                <h3>ReelFlux</h3>
-                                <p>Video to mp3 conversion</p>
-                            </a>
-                        </div>
-                    </article>
-                    <article class="project-card">
-                        <div class="project-image-container">
-                            <img src="images/icon.svg" alt="calsync Project" class="project-image">
-                        </div>
-                        <div class="project-info">
-                            <a href="https://calsync.cc">
-                                <h3>calsync</h3>
-                                <p>Schedule Syncing software</p>
-                            </a>
-                        </div>
-                    </article>
+        <section id="work">
+            <h2>Work</h2>
+            <div class="content-list">
+                <div class="list-item">
+                    <div class="list-item-header">
+                        <a href="https://calsync.cc" class="title underline-link">calsync</a>
+                        <span class="meta">2026</span>
+                    </div>
+                    <p class="description">Schedule syncing software for modern teams.</p>
+                </div>
+                <div class="list-item">
+                    <div class="list-item-header">
+                        <a href="https://phisherman-security.joey727.workers.dev"
+                            class="title underline-link">Phisherman</a>
+                        <span class="meta">2025</span>
+                    </div>
+                    <p class="description">Phishing detection tool built with Cloudflare Workers.</p>
+                </div>
+                <div class="list-item">
+                    <div class="list-item-header">
+                        <a href="https://github.com/joey727/ReelFlux" class="title underline-link">ReelFlux</a>
+                        <span class="meta">2025</span>
+                    </div>
+                    <p class="description">Video to mp3 conversion and media processing.</p>
                 </div>
             </div>
         </section>
 
-        <section id="blog" class="blog-section">
-            <div class="container">
-                <h2 class="section-title">Latest Thoughts</h2>
-                <div class="blog-grid">
-                    <article class="blog-card">
-                        <span class="blog-date">Feb 2025</span>
-                        <h3>The Art of Minimalist Engineering</h3>
-                        <p>Exploring why less is often more when building robust digital tools.</p>
-                        <a href="the-art-of-minimalist-engineering.html" class="read-more">Read Entry →</a>
-                    </article>
-                    <article class="blog-card">
-                        <span class="blog-date">Jan 2026</span>
-                        <h3>Rust: First Impressions</h3>
-                        <p>My journey transitioning from TypeScript to systems programming with Rust.</p>
-                        <a href="rust-first-impressions.html" class="read-more">Read Entry →</a>
-                    </article>
+        <section id="blog">
+            <h2>Blog</h2>
+            <div class="content-list">
+                <div class="list-item">
+                    <div class="list-item-header">
+                        <a href="rust-first-impressions.html" class="title underline-link">Rust: First Impressions</a>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="list-item-header">
+                        <a href="the-art-of-minimalist-engineering.html" class="title underline-link">The Art of
+                            Minimalist Engineering</a>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="about" class="about-section">
-            <div class="container">
-                <h2 class="section-title">About Me</h2>
-                <div class="about-content">
-                    <p>As a software engineer, I am passionate about creating innovative and user-friendly solutions.
-                        With a strong foundation in computer science and a keen eye for detail, I strive to deliver
-                        high-quality software that meets the needs of my clients and users.</p>
-                </div>
+            <h2>About</h2>
+            <div class="text-block">
+                <p>As a software engineer, I am passionate about creating innovative and user-friendly solutions. With a
+                    strong foundation in computer science and a keen eye for detail, I strive to deliver high-quality
+                    software that meets the needs of my clients and users. I am also a music lover
+                    <a href="https://open.spotify.com/playlist/3GSWcq13TffWoI0bJbOzLi?si=35ce53618351475b"
+                        class="underline-link">(checkout my playlist)</a>
+                    and enjoy sports banter.
+                </p>
             </div>
         </section>
 
         <section id="now" class="now-section">
-            <div class="container">
-                <h2 class="section-title">Now</h2>
-                <div class="now-grid">
-                    <div class="now-column">
-                        <h3>Reading</h3>
-                        <ul class="now-list">
-                            <li>
-                                <span class="book-title">Clean Architecture</span>
-                                <span class="book-author">by Robert C. Martin</span>
-                            </li>
-                            <li>
-                                <span class="book-title">Designing Data-Intensive Applications</span>
-                                <span class="book-author">by Martin Kleppmann</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="now-column">
-                        <h3>Working On</h3>
-                        <ul class="now-list">
-                            <li>Refining my portfolio design</li>
-                            <li>Learning Rust for systems programming</li>
-                            <li>Contributing to open source tools</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <h2>Now</h2>
+            <ul>
+                <li><strong>Refining:</strong> My portfolio design (this is it).</li>
+                <li><strong>Learning:</strong> Rust for systems programming.</li>
+                <li><strong>Reading:</strong> <i>Clean Architecture</i> and <i>Designing Data-Intensive
+                        Applications</i>.</li>
+            </ul>
         </section>
 
-        <section id="contact" class="contact-section">
-            <div class="container">
-                <h2 class="section-title">Let's Talk</h2>
-                <a href="mailto:joshuasackeyjr.1124@gmail.com" class="contact-email">send me an email</a>
-                <div class="social-links">
-                    <a href="https://x.com/joeyismenace">Twitter</a>
-                    <a href="https://linkedin.com/in/joshuasackey727">LinkedIn</a>
-                    <a href="https://github.com/joey727">GitHub</a>
-                </div>
+        <section id="contact">
+            <div class="social-links">
+                <a href="https://x.com/joeyismenace" class="underline-link">Twitter</a>
+                <a href="https://linkedin.com/in/joshuasackey727" class="underline-link">LinkedIn</a>
+                <a href="https://github.com/joey727" class="underline-link">GitHub</a>
+                <a href="mailto:joshuasackeyjr.1124@gmail.com" class="underline-link">Email</a>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Joshua Sackey.</p>
-        </div>
-    </footer>
 
-    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
     <script src="script.js"></script>
 </body>
 

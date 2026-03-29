@@ -8,69 +8,17 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
-    <style>
-        .blog-post-content {
-            padding-top: 10rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .blog-post-header {
-            margin-bottom: 4rem;
-        }
-
-        .blog-post-title {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            margin-bottom: 1rem;
-        }
-
-        .blog-post-meta {
-            color: var(--secondary-text);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-        }
-
-        .blog-post-body {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: var(--text-color);
-        }
-
-        .blog-post-body p {
-            margin-bottom: 2rem;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-bottom: 2rem;
-            color: var(--secondary-text);
-            transition: color 0.3s;
-        }
-
-        .back-link:hover {
-            color: var(--text-color);
-        }
-    </style>
 </head>
 
-<body>
-    <div class="mesh-gradient">
-        <div class="mesh-ball ball-1"></div>
-        <div class="mesh-ball ball-2"></div>
-    </div>
-    <div class="noise-overlay"></div>
+<body class="container">
 
-
-    <main class="container">
-        <article class="blog-post-content">
-            <a href="index.html#blog" class="back-link">←</a>
-            <header class="blog-post-header">
-                <span class="blog-post-meta">Jan 2026 • Programming</span>
-                <h1 class="blog-post-title">Rust: First Impressions</h1>
+    <main class="blog-content">
+        <article>
+            <header>
+                <h1>Rust: First Impressions</h1>
+                <p class="blog-date">January 20, 2026</p>
             </header>
-            <section class="blog-post-body">
+            <section>
                 <p>Rust has been on my radar for a while now. Known for its performance, safety, and modern tooling, it
                     has consistently topped the charts of "most loved" languages. Recently, I finally took the plunge
                     and started learning it.</p>
@@ -86,13 +34,9 @@
                     you to write better, safer code, and that's a goal worth pursuing.</p>
             </section>
         </article>
+        <a href="index.html#blog" class="underline-link"
+            style="font-family: var(--font-sans); font-size: 0.9rem; color: var(--text-secondary); margin-top: 2rem; display: inline-block;">←</a>
     </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Joshua Sackey.</p>
-        </div>
-    </footer>
 
     <script src="script.js"></script>
 </body>
