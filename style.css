@@ -185,3 +185,72 @@ a {
         padding: 15px 15px 30px;
     }
 }
+
+/* Animated scan flow figure */
+.scan-flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    margin: 2rem 0;
+    font-family: var(--font-sans);
+}
+
+.scan-flow .row {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.scan-flow .node {
+    padding: 0.5rem 0.9rem;
+    border: 1px solid var(--accent-underline);
+    border-radius: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.scan-flow .arrow {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* Nodes flash in sequence */
+.scan-flow .node {
+    animation: nodePulse 4s ease-in-out infinite;
+}
+
+.scan-flow .node.d1 { animation-delay: 0s; }
+.scan-flow .node.d2 { animation-delay: 0.4s; }
+.scan-flow .node.d3 { animation-delay: 0.8s; }
+.scan-flow .node.d4 { animation-delay: 1.2s; }
+.scan-flow .node.d5 { animation-delay: 1.6s; }
+.scan-flow .node.d6 { animation-delay: 2.4s; }
+
+@keyframes nodePulse {
+    0%, 90%, 100% {
+        color: var(--text-secondary);
+        border-color: var(--accent-underline);
+        background: transparent;
+    }
+    95% {
+        color: var(--text-primary);
+        border-color: var(--text-primary);
+        background: var(--text-primary);
+        color: var(--bg-color);
+    }
+}
+
+.scan-flow .arrow {
+    animation: arrowPulse 4s ease-in-out infinite;
+}
+
+.scan-flow .arrow.a1 { animation-delay: 1.0s; }
+.scan-flow .arrow.a2 { animation-delay: 1.8s; }
+
+@keyframes arrowPulse {
+    0%, 90%, 100% { opacity: 0.4; transform: scale(1); }
+    95% { opacity: 1; transform: scale(1.2); color: var(--text-primary); }
+}
