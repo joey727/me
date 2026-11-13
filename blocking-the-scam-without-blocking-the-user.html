@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blocking the Scam Without Blocking the User | Joshua Sackey</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+
+<body class="container">
+
+    <main class="blog-content">
+        <article>
+            <header>
+                <h1>Blocking the Scam Without Blocking the User</h1>
+                <p class="blog-date">November 2026</p>
+            </header>
+            <section>
+                <p>Phishing is usually treated as a security problem. It is also a digital rights problem: it steals people's money and data, and the tools built to stop it quietly decide which websites people can safely reach. I learned this while building <a href="https://github.com/joey727/phisherman">Phisherman</a>, an open-source phishing URL scanner. The technical choices I made turned out to be choices about fairness, privacy and access.</p>
+
+                <h2>What Phisherman does</h2>
+                <p>Phisherman takes a URL and returns a verdict: safe, suspicious or phishing. It runs its checks in parallel. Rule-based heuristics look for long URLs, an @ sign used to hide the real destination, lookalike characters, missing HTTPS, link shorteners and domains registered in the last 90 days. The URL is also checked against seven threat sources, including PhishTank, URLhaus, OpenPhish, Google Safe Browsing and VirusTotal. An optional machine-learning model adds a score based on 44 features of the URL's text. Scores are summed and capped at 100; 70 or more is phishing, 40 or more is suspicious. Every verdict comes with the reasons behind it.</p>
+
+                <p>It is available as a web scanner and a REST API, with a GitHub Action that checks links in pull requests, bots for Slack, Telegram and Discord, and browser extensions, so people can check a link where they actually meet it. The checks run side by side, so a scan takes as long as the slowest check, not the sum of all of them.</p>
+
+                <figure>
+                    <figcaption>Figure 1 · One scan, step by step</figcaption>
+                    <div class="scan-flow">
+                        <div class="row">
+                            <div class="node d1">Heuristics</div>
+                            <div class="node d2">Threat feeds</div>
+                            <div class="node d3">Live reputation</div>
+                            <div class="node d4">ML model</div>
+                        </div>
+                        <div class="row">
+                            <span class="arrow a1">↓</span>
+                            <span class="arrow a1">↓</span>
+                            <span class="arrow a1">↓</span>
+                            <span class="arrow a1">↓</span>
+                        </div>
+                        <div class="row">
+                            <div class="node d5">Score · capped at 100</div>
+                        </div>
+                        <div class="row">
+                            <span class="arrow a2">→</span>
+                        </div>
+                        <div class="row">
+                            <div class="node d6">Safe / Suspicious / Phishing</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); font-style: italic; margin-top: 0.5rem;">
+                        Heuristics, threat feeds, live reputation and the ML model run in parallel and feed into a single
+                        score (0–100), which returns a verdict with the reasons behind it.
+                    </p>
+                </figure>
+
+                <p>Most phishing links are not subtle once you split them into parts. The scheme, the domain, the ending and the path each carry a signal, and none of them needs a page to be loaded or a person's data to be read. Take http://paypal-secure-verify.tk/login/account.php: there's no HTTPS, a brand name stuffed into a different domain with words like "secure" and "verify", a suspicious .tk ending, and credential words like "login" and "account" in the path. The real https://www.paypal.com/signin sits on the official brand domain, so the brand and keyword signals are switched off for it.</p>
+
+                <p>In security, a false positive is a nuisance. For the person behind the website, it can mean being cut off from their audience. My first model over-scored legitimate but lesser-known brands, because their names and URL patterns were unfamiliar to it. Sites such as miele.com and firehydrant.io were flagged although nothing was wrong with them.</p>
+
+                <p>I fixed this by keeping reputation out of the model and putting it in a transparent rule: a domain registered for at least a year, with a clean-looking URL, is treated as safe whatever the model says. Attackers cannot easily pass this test, because their domains are usually new. A new model is also only released if it scores at least as well as the current one on a fixed benchmark. Domain age comes from WHOIS, with an RDAP lookup as a fallback.</p>
+
+                <p>The lesson I took is that any system that influences what people can reach should be explainable and open to challenge. Returning reasons with each verdict, and keeping the decisive rules readable, is what makes that possible.</p>
+
+                <p>The machine-learning model uses only the text of the URL. It does not read page content, browsing history or user profiles, and it makes no outside lookups when scoring. That limits what a scanner can learn about the person asking.</p>
+
+                <p>A tool that fetches addresses on users' behalf can also be turned against others, so Phisherman blocks requests to private network ranges and detects DNS rebinding tricks. Basic scanning is free without an account, limited only by a per-IP cap on simultaneous requests. Accounts and keys are needed only for the machine-learning model. Protection from scams should not sit entirely behind a paywall.</p>
+
+                <p>The limits of my tool show a wider problem. Its list of impersonated brands, which includes PayPal, Chase, Amazon and Netflix, is built around Western companies. It names no African banks or mobile money services, which many people rely on every day. Most of the threat feeds are maintained abroad, so scams targeting local services may be reported late. The suspicious keywords are in English.</p>
+
+                <p>Security and AI tools built on data from elsewhere tend to work least well for the people who most need them. This is the same question that runs through current debates on platform accountability and AI governance: who was the system built for, and who checks that it works for everyone it affects? The fix for my scanner is local brands, local reporting channels and more languages. It cannot be done by one developer alone. It needs the communities who are targeted.</p>
+
+                <p>Building Phisherman convinced me that technical decisions are rights decisions. Choices about thresholds, data and defaults decide who is protected, who is wrongly blocked and who has a say. Digital rights work benefits from people who understand how these systems are built, and technologists benefit from the knowledge of those who defend people's rights. I want to work where the two meet.</p>
+
+                <p><strong>Code:</strong> <a href="https://github.com/joey727/phisherman">github.com/joey727/phisherman</a> (MIT licence)</p>
+                <p><strong>Try it:</strong> <a href="https://phisherman-security.appsys.workers.dev">phisherman-security.appsys.workers.dev</a></p>
+            </section>
+        </article>
+        <a href="index.html#blog"
+            style="font-family: var(--font-sans); font-size: 0.9rem; color: var(--text-secondary); margin-top: 2rem;
+            display: inline-block;">←</a>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
